@@ -19,14 +19,6 @@ ENTRY(Reset_Handler)
 
 /* Highest address of the user mode stack */
 _estack = ORIGIN(RAM) + LENGTH(RAM);    /* end of RAM */
-/*
-  Generate a link error if heap and stack don't fit into RAM.
-  These numbers affect the USED size of RAM
-  Note: reserve 1K of ram for statics/globals 
-*/
-_Min_Heap_Size = 0x200;   /* required amount of heap: 512 bytes */
-_Min_Stack_Size = 0x200;  /* required amount of stack: 512 bytes */
-
 
 /* Specify the memory areas */
 MEMORY
@@ -144,8 +136,6 @@ SECTIONS
     . = ALIGN(8);
     PROVIDE ( end = . );
     PROVIDE ( _end = . );
-    . = . + _Min_Heap_Size;
-    . = . + _Min_Stack_Size;
     . = ALIGN(8);
   } >RAM
 

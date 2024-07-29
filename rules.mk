@@ -11,7 +11,7 @@ AS			= $(PREFIX)as
 LD			= $(PREFIX)ld
 OBJCOPY		= $(PREFIX)objcopy
 # `$(shell pwd)` or `.`, both works
-TOP			= .
+TOP			= $(PWD)
 BDIR		= $(TOP)/$(BUILD_DIR)
 
 # For each direcotry, add it to csources
@@ -122,6 +122,8 @@ ifeq ($(FLASH_PROGRM),jlink)
 else ifeq ($(FLASH_PROGRM),pyocd)
 	$(PYOCD_EXE) erase -t $(PYOCD_DEVICE) --chip --config $(TOP)/Misc/pyocd.yaml
 	$(PYOCD_EXE) load $(BDIR)/$(PROJECT).hex -t $(PYOCD_DEVICE) --config $(TOP)/Misc/pyocd.yaml
+else ifeq ($(FLASH_PROGRM),stm32flash)
+	$(FLASH_PROGRM) -w $(BDIR)/$(PROJECT).hex -vg 0x00 $(SERIAL_DEV)
 else
 	@echo "FLASH_PROGRM is invalid\n"
 endif

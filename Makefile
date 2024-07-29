@@ -1,6 +1,6 @@
 ##### Project #####
 
-PROJECT			?= app
+PROJECT			?= utility
 # The path for generated files
 BUILD_DIR		= Build
 
@@ -25,13 +25,13 @@ USE_DSP			?= n
 # Build with Waveshare e-paper lib, y:yes, n:no
 USE_EPAPER		?= n
 # Programmer, jlink or pyocd
-FLASH_PROGRM	?= pyocd
+FLASH_PROGRM	?= stm32flash
 
 ##### Toolchains #######
 
 #ARM_TOOCHAIN	?= /opt/gcc-arm/gcc-arm-11.2-2022.02-x86_64-arm-none-eabi/bin
 #ARM_TOOCHAIN	?= /opt/gcc-arm/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin
-ARM_TOOCHAIN	?= /opt/gcc-arm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin
+ARM_TOOCHAIN	?= /usr/bin
 
 # path to JLinkExe
 JLINKEXE		?= /opt/SEGGER/JLink/JLinkExe

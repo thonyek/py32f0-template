@@ -50,6 +50,7 @@ void HardFault_Handler(void)
 {
   while (1)
   {
+    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_0);
   }
 }
 
